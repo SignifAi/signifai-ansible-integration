@@ -1,0 +1,40 @@
+- hosts: localhost
+  connection: local
+  roles:
+    - signifai-rest-notification
+  tasks:
+    - name: signifai use module incident
+      signifai:
+        event_type: incident
+        event_description: Test Notification
+        value: critical
+        host: testhost.signifai.io
+        service: http
+        customer_id: CUSTOMER_ID
+        secret: CUSTOMER_SECRET
+        attributes:
+          datacenter: us-west-2
+    - name: signifai use module metric
+      signifai:
+        event_type: metric 
+        metric_description: Test Metric
+        value: 90.0
+        host: testhost.signifai.io
+        service: http
+        customer_id: CUSTOMER_ID
+        secret: CUSTOMER_SECRET
+        attributes:
+          datacenter: us-west-2
+          unit: seconds
+    - name: signifai use module deployment
+      signifai:
+        event_type: deployment
+        event_description: Service Deployment
+        value: finished-successfully
+        host: testhost.signifai.io
+        service: http
+        customer_id: CUSTOMER_ID
+        secret: CUSTOMER_SECRET
+        attributes:
+          datacenter: us-west-2
+          by: zcarlson@signifai.io
