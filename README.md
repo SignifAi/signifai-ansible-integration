@@ -24,3 +24,5 @@ Mostly just like the REST API.
 | collectors_host          | String                                | N                                | Alternate colllector hostname to report to | 
 
 You can specify 'application', 'service' and 'host' at the same time, but you must specify at least one. 
+
+The 'metric' value is implied by its type as specified in your parameter and/or by our schema.
