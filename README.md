@@ -6,7 +6,7 @@ Ansible module for notifying REST API of a metric/deployment/incident from withi
 Mostly just like the REST API. 
 
 | Attribute                | Value/Type                            | Required                         | Description                                |
-| ------------------------ | -----------------------               | :------------------------------: | ------------------------------------------ |
+| ------------------------ | ------------------------------------  | :------------------------------: | ------------------------------------------ |
 | event_type               | 'incident', 'deployment', 'metric'    | Y                                | Type of event.                             |
 | event_description        | String                                | Y ('incident' or 'deployment')   | Description of event.                      |
 | metric_description       | String                                | Y (only for 'metrics')           | Description of metric.                     |
