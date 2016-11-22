@@ -21,7 +21,7 @@ Mostly just like the REST API.
 | host                     | String                                | If no 'service' or 'application' | The host the event applies to.             |
 | customer_id              | Int                                   | Y                                | Your customer ID                           |
 | secret                   | String                                | Y                                | Your customer secret (from registration)   |
-| collectors_host          | String                                | N                                | Alternate colllector hostname to report to | 
+| collectors_host          | String                                | N                                | Alternate collector hostname to report to  | 
 
 You can specify 'application', 'service' and 'host' at the same time, but you must specify at least one. 
 
