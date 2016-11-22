@@ -32,7 +32,7 @@ def main(argv=sys.argv):
         event_description = dict(required=False),
         metric_description = dict(required=False),
         name = dict(required=False),
-        generated_by = dict(required=False, default="ansible"),
+        event_source = dict(required=False, default="ansible"),
         attributes = dict(required=False, type='dict', default={}),
         value = dict(required=True, type='raw'),
         # One of these are required
