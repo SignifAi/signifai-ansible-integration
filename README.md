@@ -1,6 +1,22 @@
 # signifai-rest-notification-role
 Ansible module for notifying REST API of a metric/deployment/incident from within a playbook
 
+## Including in your playbooks
+
+Copy this whole directory (minus test-pb.yml) into the `roles/signifai` subdirectory starting
+from the directory of your playbook. 
+
+`mkdir -p roles/signifai && cp -R signifai-ansible-integration/* roles/signifai/ && rm roles/signifai/test-pb.yml`
+
+Within your playbook, before the `tasks` section, put a line like this:
+
+```yaml
+  roles:
+    - signifai
+```
+
+See test-pb.yml for a detailed example of usage. 
+
 ## Syntax
 
 Mostly just like the REST API. 
