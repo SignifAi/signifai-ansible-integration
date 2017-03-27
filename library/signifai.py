@@ -2,7 +2,7 @@
 import json
 import sys
 
-from ansible.module_utils.basic import *
+from ansible.module_utils.basic import AnsibleModule
 import ansible.module_utils.urls as ansible_url_utils
 
 type2uri = {
@@ -21,23 +21,25 @@ required_attrs_by_type = {
     "deployment": ["event_description"],
     "metric": ["metric_description"]
 }
+
+
 def main(argv=sys.argv):
     argument_spec = dict(
         # Metric contents
-        event_type = dict(required=True, choices=type2uri.keys()),
-        event_description = dict(required=False),
-        metric_description = dict(required=False),
-        name = dict(required=False),
-        event_source = dict(required=False, default="ansible"),
-        attributes = dict(required=False, type='dict', default={}),
-        value = dict(required=True, type='raw'),
+        event_type=dict(required=True, choices=type2uri.keys()),
+        event_description=dict(required=False),
+        metric_description=dict(required=False),
+        name=dict(required=False),
+        event_source=dict(required=False, default="ansible"),
+        attributes=dict(required=False, type='dict', default={}),
+        value=dict(required=True, type='raw'),
         # One of these are required
-        application = dict(required=False, default=""),
-        service = dict(required=False, default=""),
-        host = dict(required=False, default=""),
+        application=dict(required=False, default=""),
+        service=dict(required=False, default=""),
+        host=dict(required=False, default=""),
         # Transport options
-        jwt_token = dict(required=True),
-        collectors_host = dict(required=False, default="cadence-in.signifai.io")
+        jwt_token=dict(required=True),
+        collectors_host=dict(required=False, default="cadence-in.signifai.io")
     )
 
     module = AnsibleModule(
@@ -55,13 +57,13 @@ def main(argv=sys.argv):
 
     uri = type2uri[module.params['event_type']]
 
-    if (module.params['event_type'] in value_enums and
-        module.params['value'] not in value_enums[module.params['event_type']]):
+    if module.params['event_type'] in value_enums and \
+       module.params['value'] not in value_enums[module.params['event_type']]:
         module.fail_json(msg="For event_type {0} value must be one of {1}".format(
             module.params['event_type'],
             str.join(", ", value_enums[module.params['event_type']])))
 
-    if (module.params['event_type'] in required_attrs_by_type):
+    if module.params['event_type'] in required_attrs_by_type:
         for attr in required_attrs_by_type[module.params['event_type']]:
             if not module.params[attr]:
                 module.fail_json(msg="Events of type {0} must provide {1} attributes".format(
@@ -70,7 +72,7 @@ def main(argv=sys.argv):
 
     # Remove the transport parameters
     TRANSPORT_PARAMS = ('jwt_token', 'collectors_host', 'event_type')
-    postbody = dict([(key,val) for key,val in module.params.iteritems() if key not in TRANSPORT_PARAMS and val])
+    postbody = dict([(key, val) for key, val in module.params.iteritems() if key not in TRANSPORT_PARAMS and val])
 
     # Prepare the request
     url = "https://{0}/{1}".format(module.params['collectors_host'], uri)
