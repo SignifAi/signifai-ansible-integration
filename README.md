@@ -35,8 +35,7 @@ Mostly just like the REST API.
 | application              | String                                | If no 'service' or 'host'        | The application the event applies to.      |
 | service                  | String                                | If no 'application' or 'host'    | The service the event applies to.          |
 | host                     | String                                | If no 'service' or 'application' | The host the event applies to.             |
-| customer_id              | Int                                   | Y                                | Your customer ID                           |
-| secret                   | String                                | Y                                | Your customer secret (from registration)   |
+| jwt_token                | String                                | Y                                | Your customer jwt token (from registration)|
 | collectors_host          | String                                | N                                | Alternate collector hostname to report to  | 
 
 You can specify 'application', 'service' and 'host' at the same time, but you must specify at least one. 
