@@ -57,8 +57,8 @@ def main(argv=sys.argv):
 
     uri = type2uri[module.params['event_type']]
 
-    if module.params['event_type'] in value_enums and \
-       module.params['value'] not in value_enums[module.params['event_type']]:
+    if (module.params['event_type'] in value_enums
+            and module.params['value'] not in value_enums[module.params['event_type']]):
         module.fail_json(msg="For event_type {0} value must be one of {1}".format(
             module.params['event_type'],
             str.join(", ", value_enums[module.params['event_type']])))
