@@ -10,8 +10,7 @@
         value: critical
         host: testhost.signifai.io
         service: http
-        customer_id: CUSTOMER_ID
-        secret: CUSTOMER_SECRET
+        jwt_token: CUSTOMER_JWT_TOKEN
         attributes:
           datacenter: us-west-2
     - name: signifai use module metric
@@ -21,8 +20,7 @@
         value: 90.0
         host: testhost.signifai.io
         service: http
-        customer_id: CUSTOMER_ID
-        secret: CUSTOMER_SECRET
+        jwt_token: CUSTOMER_JWT_TOKEN
         attributes:
           datacenter: us-west-2
           unit: seconds
@@ -33,8 +31,7 @@
         value: finished-successfully
         host: testhost.signifai.io
         service: http
-        customer_id: CUSTOMER_ID
-        secret: CUSTOMER_SECRET
+        jwt_token: CUSTOMER_JWT_TOKEN
         attributes:
           datacenter: us-west-2
           by: zcarlson@signifai.io
