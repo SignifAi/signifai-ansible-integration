@@ -39,7 +39,7 @@ def main(argv=sys.argv):
         host=dict(required=False, default=""),
         # Transport options
         jwt_token=dict(required=True),
-        collectors_host=dict(required=False, default="cadence-in.signifai.io")
+        collectors_host=dict(required=False, default="collectors.signifai.io")
     )
 
     module = AnsibleModule(
