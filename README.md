@@ -1,5 +1,6 @@
 # signifai-rest-notification-role
-Ansible module for notifying REST API of a metric/deployment/incident from within a playbook
+Ansible module for notifying SignifAI REST API of a metric/deployment/incident from within a playbook.
+Mostly used to report on deployment events.  
 
 ## Including in your playbooks
 
