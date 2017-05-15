@@ -42,3 +42,10 @@ Mostly just like the REST API.
 You can specify 'application', 'service' and 'host' at the same time, but you must specify at least one. 
 
 The 'metric' value is implied by its type as specified in your parameter and/or by our schema.
+
+## License
+Released under under the MIT [License](LICENSE).
+
+## Acknowledgements
+* Author: [@SignifAi](https://github.com/SignifAi/)
+* Info: www.signifai.io
